@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const creds = localStorage.getItem(CREDENTIAL_IDS);
   const { loading, error, data } = useQuery(GET_CREDENTIALS_QUERY, {
-    variables: { credentialIds: creds.split(',') }
+    variables: { credentialIds: creds.split(',') || [] }
   });
 
   const [logout] = useMutation(LOGOUT_MUTATION);
