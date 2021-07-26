@@ -27,7 +27,6 @@ const SignIn = () => {
           ...formValues
         }
       });
-      console.log({ data });
       // localStorage.setItem(AUTH_TOKEN, data.signUp);
       // localStorage.setItem(CREDENTIAL_IDS, data.signIn.user.credentials);
       history.push('/login');

@@ -31,10 +31,9 @@ const SignIn = () => {
           auth: formValues.verificationCode
         }
       });
-      console.log({ data });
       localStorage.setItem(AUTH_TOKEN, data.signIn);
       // localStorage.setItem(CREDENTIAL_IDS, data.signIn.user.credentials);
-      history.push('/');
+      history.push('/dashboard');
     } catch (error) {
       console.error(error);
     }
