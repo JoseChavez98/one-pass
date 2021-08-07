@@ -54,7 +54,7 @@ const SignIn = () => {
               </Link>
             </p>
             <p className="level-item has-text-centered  button is-info">
-              <Link to="/login" className="has-text-white">
+              <Link to="/" className="has-text-white">
                 Login
               </Link>
             </p>

@@ -16,7 +16,7 @@ import store from './store';
 import { AUTH_TOKEN } from './constants';
 
 const httpLink = createHttpLink({
-  uri: 'https://67f8def105cf.ngrok.io/api'
+  uri: 'http://localhost:4000/api'
 });
 
 const authLink = setContext((_, { headers }) => {

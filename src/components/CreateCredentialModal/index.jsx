@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_CREDENTIAL_MUTATION } from '../../services/Credentials';
+var generator = require('generate-password');
 
 const CreateCredentialModal = ({ active, hideModal }) => {
+  var password = generator.generate({
+    length: 20,
+    numbers: true
+  });
+
   const [formValues, setFormValues] = useState({
     alias: '',
     email: '',
     userName: '',
     serviceProvider: '',
-    password: ''
+    password: password
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const [create, { loading }] = useMutation(CREATE_CREDENTIAL_MUTATION);
 
@@ -111,12 +118,16 @@ const CreateCredentialModal = ({ active, hideModal }) => {
               <p className="control has-icons-left">
                 <input
                   className="input"
-                  type="password"
+                  type={`${showPassword ? 'text' : 'password'}`}
                   placeholder="Password"
                   value={formValues.password}
                   onChange={e => {
                     setFormValues({ ...formValues, password: e.target.value });
                   }}
+                  onFocus={() => {
+                    setShowPassword(true);
+                  }}
+                  onBlur={() => setShowPassword(false)}
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock"></i>
